@@ -1,19 +1,16 @@
-from flask import Flask
-
-from .config import Config
-from .database import db
+import asyncio
+from quart import Quart
 
 from .routers.main import main
+from .routers.converter import converter
 
-def create_app(config_class: object = Config):
-    app = Flask(__name__)
-    app.config.from_object(config_class)
+async def create_app() -> Quart:
+    app = Quart(__name__)
 
     app.register_blueprint(main)
-
-    db.init_app(app)
-    with app.app_context():
-        db.create_all()
+    app.register_blueprint(converter)
 
     return app
+
+app = asyncio.run(create_app())
 

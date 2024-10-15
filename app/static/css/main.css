@@ -141,3 +141,9 @@ html, body {
     font-size: 16px;
     font-weight: 500;
 }
+
+.converter__main__title{
+    font-family: "RobotoMono", sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+}

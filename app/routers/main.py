@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template
+from quart import Blueprint, render_template
 
 main = Blueprint("main", __name__)
 
 @main.route("/")
-def index():
-    return render_template("main/index.html")
+async def index():
+    return await render_template("main/index.html")
