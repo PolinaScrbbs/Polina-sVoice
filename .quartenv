@@ -1,3 +1,0 @@
-QUART_APP=app
-QUART_ENV=development
-QUART_DEBUG=True

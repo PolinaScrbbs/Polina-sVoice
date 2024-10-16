@@ -4,8 +4,9 @@ from sqlalchemy.orm import DeclarativeBase
 class Base(DeclarativeBase):
     pass
 
-class Voceover(Base):
+class Voiceover(Base):
     __tablename__ = "voceovers"
 
     id = Column(Integer, primary_key=True)
+    text = Column(String(256), nullable=False)
     voceover_path = Column(String, unique=True, nullable=False)

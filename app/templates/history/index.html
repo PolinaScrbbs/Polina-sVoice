@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}History{% endblock %}
+{% block content %}
+<h1>History</h1>
+{% for voiceover in voiceovers %}
+    <li>
+        {{ voiceover.text }} 
+        (<a href="{{ url_for('history.download_file', filename=voiceover.voceover_path) }}">Скачать</a>)
+    </li>
+{% endfor %}
+
+
+{% endblock %}
