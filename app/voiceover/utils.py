@@ -1,19 +1,6 @@
 import edge_tts
 
-async def get_available_voices():
+async def get_voices_name():
     voices = await edge_tts.list_voices()
-    
-    unique_languages = set()
-    unique_voices = set()
-    
-    for voice in voices:
-        unique_languages.add(voice['Locale'])
-        unique_voices.add(voice['Name'])
-    
-    print("Уникальные языки:")
-    for language in unique_languages:
-        print(language)
-    
-    print("\nУникальные озвучки:")
-    for voice in unique_voices:
-        print(voice)
+    voice_names = sorted(set(voice['Name'] for voice in voices))
+    return voice_names

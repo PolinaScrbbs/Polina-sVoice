@@ -1,20 +1,17 @@
+from aiocache import cached
 from quart import Blueprint, render_template, request, send_file
 from ..voiceover import to_voice
+from ..voiceover.utils import get_voices_name
 from ..database import get_session
 from ..models.voiceover import Voiceover
-import edge_tts
-
-from app import voiceover
 
 converter = Blueprint("converter", __name__)
 
 @converter.route("/converter")
+@cached(ttl=3600)
 async def converter_page():
-    voices = await edge_tts.list_voices()
-
-    languages = sorted(set(voice['Locale'] for voice in voices))
-    voice_names = sorted(set(voice['Name'] for voice in voices))
-    return await render_template("converter/index.html", languages=languages, voices=voice_names)
+    voice_names = await get_voices_name()
+    return await render_template("converter/index.html", voices=voice_names)
 
 @converter.route('/converter', methods=['POST'])
 async def convert():

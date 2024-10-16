@@ -1,3 +1,4 @@
+from aiocache import cached
 from quart import Blueprint, render_template, send_file
 from sqlalchemy import select
 
@@ -6,7 +7,9 @@ from ..models.voiceover import Voiceover
 
 history = Blueprint("history", __name__)
 
+
 @history.route("/history")
+@cached(ttl=5)
 async def history_page():
 
     async with get_session() as session:
