@@ -20,6 +20,7 @@ async def history_page():
 
     return await render_template("history/index.html", voiceovers=voiceovers)
 
-@history.route('/download/<path:filename>')
+
+@history.route("/download/<path:filename>")
 async def download_file(filename):
-    return await send_file(filename , mimetype='audio/mp3', as_attachment=True)
+    return await send_file(filename, mimetype="audio/mp3", as_attachment=True)

@@ -5,6 +5,7 @@ from .routers.main import main
 from .routers.converter import converter
 from .routers.history import history
 
+
 async def create_app() -> Quart:
     app = Quart(__name__)
 
@@ -14,5 +15,5 @@ async def create_app() -> Quart:
 
     return app
 
-app = asyncio.run(create_app())
 
+app = asyncio.run(create_app())
