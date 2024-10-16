@@ -1,7 +1,6 @@
 from quart import Blueprint, render_template, send_file
 from sqlalchemy import select
 
-from ..config import Config
 from ..database import get_session
 from ..models.voiceover import Voiceover
 

@@ -7,9 +7,19 @@
     
     <form action="/converter" method="post">
         <div class="form-floating mb-4">
+            <select class="form-select" id="VoiceSelect" name="voice">
+                {% for voice in voices %}
+                    <option value="{{ voice }}">{{ voice }}</option>
+                {% endfor %}
+            </select>
+            <label for="VoiceSelect">Select Voice</label>
+        </div>
+
+        <div class="form-floating mb-4">
             <textarea class="form-control" placeholder="Leave a comment here" id="VoiceArea" name="text" style="height: 300px"></textarea>
             <label for="VoiceArea">Text for voice-over</label>
         </div>
+
         <p class="lead">
             <button type="submit" class="btn btn-lg btn-light fw-bold border-white bg-white">Voice over</button>
         </p>
