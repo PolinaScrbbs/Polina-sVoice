@@ -5,7 +5,8 @@
 <h1>History</h1>
 {% for voiceover in voiceovers %}
     <li>
-        {{ voiceover.text }} 
+        {{ voiceover.text }} |
+        {{ voiceover.voiceover }}
         (<a href="{{ url_for('history.download_file', filename=voiceover.voceover_path) }}">Скачать</a>)
     </li>
 {% endfor %}

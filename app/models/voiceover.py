@@ -9,4 +9,5 @@ class Voiceover(Base):
 
     id = Column(Integer, primary_key=True)
     text = Column(String(256), nullable=False)
+    voiceover = Column(String(70), nullable=False)
     voiceover_path = Column(String, unique=True, nullable=False)

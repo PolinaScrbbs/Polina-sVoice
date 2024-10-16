@@ -4,6 +4,8 @@ from ..database import get_session
 from ..models.voiceover import Voiceover
 import edge_tts
 
+from app import voiceover
+
 converter = Blueprint("converter", __name__)
 
 @converter.route("/converter")
@@ -26,7 +28,7 @@ async def convert():
     audio_file_path = await to_voice(text, selected_voice)
     
     async with get_session() as session:
-        new_voiceover = Voiceover(text=text, voiceover_path=audio_file_path)
+        new_voiceover = Voiceover(text=text, voiceover=selected_voice, voiceover_path=audio_file_path)
         session.add(new_voiceover)
         await session.commit()
     
