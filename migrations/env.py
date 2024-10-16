@@ -2,21 +2,18 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config, pool
 from app.models.voiceover import Base
 from alembic import context
-from app.config import Config
-
-config = Config()
-database_url = config.ALEMBIC_URL
 
 config = context.config
 section = config.config_ini_section
 
 
-config.set_section_option(section, "DATABASE_URL", database_url)
+config.set_section_option(section, "DATABASE_URL", "sqlite:///./PolinasVoice.db")
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 target_metadata = Base.metadata
+
 
 def run_migrations_offline() -> None:
 
